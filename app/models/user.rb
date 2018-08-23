@@ -1,8 +1,9 @@
 require 'pry'
-require 'tty-table'
+# require 'tty-table'
 require 'pastel'
 require 'ruby_figlet'
 require 'catpix'
+require 'terminal-table'
 
 
 class User < ActiveRecord::Base
@@ -238,14 +239,22 @@ class User < ActiveRecord::Base
     pastel = Pastel.new
     header = ["DATE", "CATEGORY", "CARD NAME", "CARD SAYING"]
     header = header.map {|h| pastel.magenta.bold(h)}
-    table = TTY::Table.new header, rows
+    # table = TTY::Table.new header, rows
     # puts table.render(:ascii, alignments: :center, padding: 1) do |renderer|
     #   renderer.filter = proc do |val, row_index, col_index|
     #     pastel.red.on_green(val)
     #   end
     # end
+    title = pastel.red.bold("TAROT HISTORY")
 
-    puts table.render(:ascii, alignments: :center, padding: 1)
+    table = Terminal::Table.new
+    table.title = title
+    table.headings = header
+    table.rows = rows
+    table.style = {:width => nil, :border_x => ".", :border_i => "★", :alignment => :center}
+    puts table
+
+    # puts table.render(:ascii, alignments: :center, padding: 1)
     # pastel = Pastel.new
     # puts table.render(:ascii, alignments: :center, padding: 1) do |renderer|
     #   pastel.renderer.border.color = :green

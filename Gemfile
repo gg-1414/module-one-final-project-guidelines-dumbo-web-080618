@@ -9,8 +9,9 @@ gem "require_all"
 # gem "rmagick" "~>2.15", ">= 2.15.4"
 gem "catpix"
 # gem "tty-font"
-gem "tty-table"
+# gem "tty-table"
 gem "pastel"
 gem 'ruby_figlet', '~> 0.6.1'
 # gem "shell-spinner"
 gem 'colorize'
+gem 'terminal-table'
