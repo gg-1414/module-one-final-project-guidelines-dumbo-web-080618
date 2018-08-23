@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def welcome
+      pid = fork{ exec 'afplay', './sound/test.mp3' }
     prompt = TTY::Prompt.new(active_color: :on_red)
     w = prompt.select(wel_word, marker: "❤") do |menu|
          menu.choices "Existing User" => "existing", "New User" => "newuser", Exit: "exit"
@@ -272,7 +273,6 @@ class User < ActiveRecord::Base
     # binding.pry
     puts pastel.red.bold(RubyFiglet::Figlet.new(number, "digital"))
     puts "\n \n"
-    # puts RubyFiglet::Figlet.new("Linh Gina", "isometric3")
     final_pic
   end
 
@@ -304,6 +304,8 @@ class User < ActiveRecord::Base
                                           █───▀▄▄───────────────▄▄▄▀─────────▌`
     ")
 
+    system "killall afplay"
+  # end
   end
 
 end
