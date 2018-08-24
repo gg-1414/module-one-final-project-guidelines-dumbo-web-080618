@@ -32,7 +32,7 @@ class Card < ActiveRecord::Base
     :limit_x => 0.5,
     :limit_y => 0.9,
     :center_x => true,
-    :center_y => true,
+    :center_y => false,
     :bg => "black",
     :bg_fill => true,
     :resolution => "high"
